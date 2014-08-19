@@ -5,7 +5,7 @@
 .pts {
   font-family: 'PT Sans', Arial, sans-serif;
 }
-// Color
+// Цвета
 @dgreen: #0a680a;
 @grey: #D7D7D7;
 @red: #F20000;
@@ -28,9 +28,10 @@
 body {
   .pts;
   min-width: 320px;
+  line-height: 19/16; // 19px
+  font-size: 1em;
 }
 ._semantic {
-  text-indent: -9999px;
   margin: 0;
   font-size: 0;
 }
@@ -52,15 +53,16 @@ header {
 }
 .logotype__a {
   display: block;
-  text-indent: -9999px;
-  width: 229px;
-  height: 75px;
-  background: url(../img/logo.png);
+  width: @sq*5;
+
+  img {
+    width: 100%;
+  }
 }
 .contacts {
-  max-width: 200px;
+  max-width: @sq*5;
   margin-left: ((19.5*@sq)/1040)*100%;
-  padding: 10px 0;
+  padding: @sq/4 0;
 
   @media (max-width:568px) {
     display: none;
@@ -69,12 +71,19 @@ header {
 .contacts__i {
   display: block;
   color: @grey;
-  font-size: 13px;
+  font-size: .8125em; // 13px
 }
 .contacts__i_s-big {
   color: @dgreen;
-  font-size: 18px;
+  font-size: 1.125em; // 18px
   font-weight: bold;
+  margin-top: 5px;
+
+  a {
+    color: black;
+    text-decoration: none;
+    border-bottom: 1px solid fadeout(black, 70%);
+  }
 }
 .contacts__i__a {
   position: relative;
@@ -82,7 +91,7 @@ header {
 .contacts__i__a__img {
   position: absolute;
   top: -13px;
-  left: -8px
+  left: -8px;
 }
 .age {
   position: absolute;
@@ -95,7 +104,7 @@ header {
 }
 .age__i {
   color: @grey;
-  font-size: 15px;
+  font-size: .9375em; // 15px
   font-weight: bold;
 }
 
@@ -126,9 +135,9 @@ header {
 .mob__i__a {
   color: @dgreen;
   display: block;
-  padding: 10px;
+  padding: @sq/4;
   border-bottom: 1px solid darken(@grey, 8%);
-  font-size: 14px;
+  font-size: .875em; //14px
   font-weight: bold;
   text-transform: uppercase;
   border-top: 3px solid lighten(@grey, 8%);
@@ -172,7 +181,7 @@ header {
 }
 .subnav__list {
   .cf;
-  padding: 0 10px;
+  padding: 0 @sq/4;
   margin: 0;
   list-style: none;
 
@@ -206,7 +215,7 @@ header {
 }
 .subnav__i {
   display: inline;
-  margin-right: 10px;
+  margin-right: @sq/4;
 
   @media (max-width:568px) {
     display: block;
@@ -226,7 +235,7 @@ header {
   @media (max-width:568px) {
     display: block;
     color: @dgreen;
-    padding: 10px 0 10px 20px;
+    padding: @sq/4 0 @sq/4 @sq/2;
     font-weight: bold;
     text-transform: uppercase;
 
@@ -278,7 +287,7 @@ header {
 }
 .nav__i__a {
   display: block;
-  padding: 0 10px;
+  padding: 0 @sq/4;
   color: @dgreen;
   text-decoration: none;
   transition: border .1s linear;
@@ -290,7 +299,7 @@ header {
   @media (max-width:568px) {
     border: none;
     margin: 0;
-    padding: 10px;
+    padding: @sq/4;
     font-weight: bold;
     text-transform: uppercase;
     
@@ -310,21 +319,6 @@ header {
 
 .nav__i__a_active {
   &:extend(.nav__i__a_current);
-} 
-.out-nav {
-  margin-top: -30px;
-  margin-bottom: 30px;
-  font-size: 13px;
-}
-.out-nav__a {
-  color: black;
-  text-decoration: none;
-  border-bottom: 1px solid fadeout(black, 70%);
-
-  &:hover {
-    color: @red;
-    border-bottom: 1px solid fadeout(@red, 70%);
-  }
 }
 // Прямой эфир
 .a-hline {
@@ -365,7 +359,7 @@ header {
 }
 .b-hline {
   margin: 0;
-  font-size: 19px;
+  font-size: 1.1875em; //19px
 }
 .b-hline__inner {
   border-top: 3px solid black;
@@ -378,7 +372,7 @@ header {
 .schedule__u {
   display: block;
   padding: 5px;
-  font-size: 13px;
+  font-size: .8125em; //13px
   margin-left: -5px;
   line-height: 1.2;
 
@@ -393,18 +387,18 @@ header {
 }
 .schedule__time {
   float: left;
-  width: 40px;
+  width: @sq;
   font-weight: bold;
-  font-size: 16px;
 }
 .schedule__title {
   display: block;
-  margin-left: 50px;
+  margin-left: @sq+10;
 }
 .news {
   float: left;
   width: ((19*@sq)/1040)*100%;
   font-size: 0;
+  margin-bottom: @sq;
 
   @media (max-width:800px) {
     float: none;
@@ -424,7 +418,8 @@ header {
   vertical-align: top;
   zoom: 1;
   *display: inline;
-  margin-bottom: @sq;
+  margin-bottom: @sq/2;
+  font-size: 16px; // Обновляем кегель
   padding: 0 (6.666666666666667/760)*100%;
 
   @media (max-width:568px) {
@@ -434,19 +429,20 @@ header {
   }
 }
 .news__box__main {
+  padding-top: 5px; 
+  padding-bottom: 5px;
+  margin-top: -5px;
   background: rgba(10, 104, 10, 0.08);
-  padding: 10px;
-  margin-top: -10px;
-  margin-left: -10px;
- }
+}
 .news__hline {
-  font-size: 16px;
   border-bottom: 1px dashed @grey;
   padding: 0 0 5px;
   margin: 0 0 5px;
+  font-size: 1em; // 16px
+
 
   @media (max-width:568px) {
-    font-size: 18px;
+    font-size: 1.125em; // 18px
   }
 }
 .news__hline__a {
@@ -459,22 +455,26 @@ header {
   }
 }
 .news__unit {
-  margin-bottom: 10px;
+  margin-bottom: @sq/2;
+
+  &:last-child {
+    margin-bottom: 0;
+  }
 }
 .news__date {
   color: @red; 
-  font-size: 12px;
+  font-size: .75em; // 12px
 
   @media (max-width:568px) {
-    font-size: 13px;
+    font-size: .8125em; // 13px
   }
 }
 .news__txt {
   margin: 0;
-  font-size: 14px;
+  font-size: .875em; // 14px
 
   @media (max-width:568px) {
-    font-size: 16px;
+    font-size: 1em;
   }
 }
 .news__txt__a {
@@ -502,7 +502,7 @@ header {
   margin: 0; 
   border: 0; 
   border-collapse: collapse; 
-  padding: 20px 0;
+  padding: @sq/2 0;
 
   @media (max-width:568px) {
     padding: 1% 0;
@@ -520,19 +520,19 @@ header {
  height: 100%;
 }
 .arcticmodal-error {
- padding: 20px; border-radius: 10px; background: #000; color: #fff; 
+ padding: @sq/2; border-radius: @sq/4; background: #000; color: #fff; 
 }
 .arcticmodal-loading {
- width: 80px; height: 80px; border-radius: 10px; background: #000 url(loading.gif) no-repeat 50% 50%; 
+ width: @sq*2; height: @sq*2; border-radius: @sq/4; background: #000 url(loading.gif) no-repeat 50% 50%; 
 }
 .modal__wrapper {
   display: none;
 }
 .modal {
-  width: 40%;
+  width: 60%;
   margin: 0 auto;
   background: white;
-  padding: 10px;
+  padding: @sq/4;
 
   img {
     width: 100%;
@@ -546,12 +546,12 @@ header {
   }
 }
 .box-modal_close {
-  position: absolute;
+  position: fixed;
   display: block;
   width: 20px;
   height: 20px;
   top: 10px;
-  right: 10px;
+  right: 30px;
   text-indent: -999em;
   background: url(../img/modal-close.png) no-repeat left;
 
@@ -566,7 +566,7 @@ header {
     background: none;
     border: 1px solid @red;
     width: auto;
-    margin-bottom: 20px;
+    margin-bottom: @sq/2;
     padding: 8px 0;
     text-align: center;
     color: @red;
@@ -578,12 +578,12 @@ header {
   }
 }
 .a-hline.a-hline_modal {
-  font-size: 18px;
-  padding-bottom: 10px;
+  font-size: 1.125em; // 18px
+  padding-bottom: @sq/4;
   border-bottom: 1px dashed @grey;
 }
 .news__txt_modal {
-  font-size: 15px;
+  font-size: .9375; // 15px
   margin: 0 0 @sq/2;
 }
 
@@ -592,6 +592,7 @@ header {
   margin-left: ((19.5*@sq)/1040)*100%;
   border: 1px solid @grey;
   padding: 0 5px;
+  margin-top: -1px; // Под рамку
   box-shadow: 0 3px 0 lighten(@grey, 8%);
 
   @media (max-width:800px) {
@@ -604,7 +605,7 @@ header {
   }
 }
 .a-hline_m {
-  font-size: 19px;
+  font-size: 19/16em;
 }
 .topical__box {
   margin-bottom: @sq/2;
@@ -632,18 +633,13 @@ header {
   }
 }
 .topical__meta {
-  font-size: 14px;
+  font-size: 14/16em;
   font-weight: bold;
   color: black;
   text-decoration: none;
 
-  &:hover {
-    color: @red;
-    text-decoration: underline;
-  }
-
   @media (max-width:568px) {
-    font-size: 16px;
+    font-size: 1em;
   }
 }
 
@@ -657,7 +653,7 @@ header {
 
   span {
     color: @grey;
-    font-size: 11px;
+    font-size: 11/16em;
     position: absolute;
     top: -9px;
     left: 5px;
@@ -676,7 +672,6 @@ header {
   @media (max-width:800px) {
     display: block;
     width: 100%;
-    margin-top: 0;
   }
 }
 
@@ -684,14 +679,14 @@ footer {
   padding: @sq 0 @sq/2;
   background: #f8f7f5;
   border-top: 3px solid lighten(@grey, 8%);
-  font-size: 13px;
+  font-size: 13/16em;
 
   @media (max-width:800px) {
     margin-top: @sq/2;
   }
 
   @media (max-width:568px) {
-    font-size: 14px;
+    font-size: 14/16em;
   }
 }
 .copy__box {
@@ -749,14 +744,16 @@ footer {
     background: url(../img/map.png) no-repeat;
   }
 }
-
+.contacts_footer__yashare {
+  margin-top: 5px;
+}
 // О компании
 .bread-nav {
   clear: both;
   margin: 0 0 @sq/2;
 }
 .bread-nav__a {
-  font-size: 13px;
+  font-size: 13/16em;
   color: black;
   text-decoration: none;
   border-bottom: 1px solid fadeout(black, 70%);
@@ -766,20 +763,64 @@ footer {
     border-bottom: 1px solid fadeout(@red, 70%);
   }
 }
-.mission {
+.mission__p {
   width: ((19*@sq)/1040)*100%;
+  font-size: 14/16em;
+  margin: 0 0 @sq/2;
   float: left;
+
+  @media (max-width:568px) {
+    width: 100%;
+    float: none;
+  }
+}
+.evidence__box {
+  margin-left: ((19.5*@sq)/1040)*100%;
+  line-height: 1;
+
+  @media (max-width:568px) {
+    margin-left: 0;
+    width: 100%;
+  }
+}
+.evidence__a {
+  color: #0066cc;
+  text-decoration: none;
+  font-size: 13/16em;
+  position: relative;
+
+  img {
+    height: 140px;
+  }
+
+  &:hover {
+    text-decoration: underline;
+    color: @red;
+
+    img {
+      box-shadow: 0 0 0 1px @red;
+    }
+
+    .a-blanc {
+      background-position: bottom;
+    }
+  }
+}
+.a-blanc {
+  width: 13px;
+  height: 10px;
+  background: url(./../img/link_up.png) no-repeat top;
+  position: absolute;
+  bottom: 4px;
+  right: -15px;
+}
+.faces {
+  float: left;
+  width: ((19*@sq)/1040)*100%;
 
   @media (max-width:800px) {
     width: 100%;
   }
-}
-.mission__p {
-  font-size: 14px;
-  margin: 0 0 20px;
-}
-.faces {
-  &:extend(.mission);
 }
 .faces__list {
   padding: 0;
@@ -813,7 +854,7 @@ footer {
 }
 .faces__name {
   display: block;
-  font-size: 17px;
+  font-size: 17/14em;
 }
 
 // Архив передач
@@ -837,7 +878,7 @@ footer {
   vertical-align: top;
   zoom: 1;
   *display: inline;
-  font-size: 14px;
+  font-size: 16px; // Обновляем кегель
   margin-bottom: @sq;
   padding: 0 (10/780)*100%;
 
@@ -851,7 +892,7 @@ footer {
   margin-bottom: 3px;
 }
 .archive__title {
-  font-size: 13px;
+  font-size: 14/16em;
   font-weight: bold;
 }
 
@@ -866,10 +907,11 @@ footer {
   }
 }
 .coop__txt {
-  &:extend(.mission__p);
+  font-size: .875em; // 14px
+  margin: 0 0 @sq/2;
 }
 .coop__i {
-  font-size: 14px;
+  font-size: .875em; // 14px
   display: block;
 }
 .coop__a {
@@ -887,18 +929,24 @@ footer {
   margin-top: @sq;
 }
 .coop__map__i {
-  font-size: 14px;
+  font-size: .875em; // 14px
   display: block;
   padding-bottom: 5px;
 }
 
 // Новости
 .main-news {
-  &:extend(.coop);
+  width: ((19*@sq)/1040)*100%;
+  float: left;
+
+  @media (max-width:800px) {
+    width: 100%;
+    float: none;
+  }
 }
 .main-news__row {
   padding: 0;
-  margin: 0 -((10)/760)*100% -40px;
+  margin: 0 -((10)/760)*100%;
   font-size: 0;
 }
 .main-news__box {
@@ -907,9 +955,9 @@ footer {
   vertical-align: top;
   zoom: 1;
   *display: inline;
-  font-size: 14px;
+  font-size: 16px; // Обновляем кегель
   margin-bottom: @sq;
-  margin: 0 (10/780)*100% 20px;
+  margin: 0 (10/780)*100% @sq/2;
 
   @media (max-width:568px) {
     width: 100%; 
@@ -917,14 +965,14 @@ footer {
   }
 }
 .main-news__data {
-  font-size: 18px;
+  font-size: 1.125em; // 18px
   font-weight: bold;
   color: @red;
   float: left;
-  line-height: 14px;
+  line-height: .7368421052631579;
 }
 .main-news__txt {
-  font-size: 14px;
+  font-size: .875em; // 14px
   margin: 0 0 @sq/2 50px;
 }
 .main-news__a {
@@ -939,18 +987,24 @@ footer {
 
 // Рабочие материалы
 .workfile {
-  &:extend(.main-news);
-  margin: 0;
+  width: ((19*@sq)/1040)*100%;
+  float: left;
+  margin-bottom: 20px;
+
+  @media (max-width:800px) {
+    width: 100%;
+    float: none;
+  }
 }
 .workfile__box {
-  margin-bottom: @sq;
+  margin-bottom: @sq/2;
 }
 .b-hline_n {
   font-weight: normal;
-  font-size: 17px;
+  font-size: 1em;
   border-bottom: 1px dashed @grey;
   padding-bottom: 5px;
-  margin-bottom: 10px;
+  margin-bottom: @sq/4;
 }
 .workfile__list {
   padding: 0;
@@ -958,8 +1012,7 @@ footer {
   list-style: none;
 }
 .workfile__i {
-  font-size: 15px;
-  line-height: 1.5;
+  font-size: .875em; // 14px
 }
 .workfile__a {
   text-decoration: none;
@@ -973,4 +1026,115 @@ footer {
 }
 .workfile__mme {
   color: @grey;
+}
+
+// Расписание
+.timetable {
+  width: ((19*@sq)/1040)*100%;
+  float: left;
+
+  @media (max-width:800px) {
+    width: 100%;
+    float: none;
+  }
+}
+.timetable__bar {
+  background: fade(@dgreen, 8%);
+  border: 1px solid fade(@dgreen, 20%);
+  margin-bottom: @sq/2;
+
+  @media (max-width:568px) {
+    display: none
+  }
+}
+.bar__list {
+  margin: 0;
+  padding: 0;
+  font-size: 0;
+  position: relative;
+}
+.bar__u {
+  width: (100%/7);
+  display: inline-block;
+  vertical-align: top;
+  zoom: 1;
+  *display: inline;
+  font-size: 16px; // Обновляем кегель
+  text-align: center;
+  padding: 5px 0;
+  box-shadow: -1px 0 0 fade(@dgreen, 20%);
+
+  &:before {
+    content: "";
+    display: block;
+    top: 0;
+    height: 100%;
+    border-left: 1px solid white;
+    position: absolute;
+  }
+
+  &:first-child {
+    box-shadow: none;
+  }
+}
+.bar__u_left {
+  &:before {
+    display: none;
+  }
+}
+.bar__u_ta-l {
+  text-align: left;
+
+  a {
+    padding-left: 10px;
+  }
+}
+a.bar__a {
+  display: block;
+  text-decoration: none;
+  color: @dgreen;
+
+  &:hover {
+    color: @red;
+  }
+}
+.bar__u_past {
+  opacity: .5;
+}
+.bar__i {
+  display: block;
+  font-weight: bold;
+}
+.bar__i_s {
+  font-size: 13/16em;
+  font-weight: normal;
+  display: inline;
+}
+.bar__i_s_current {
+  background: @dgreen;
+  padding: 0 10px;
+  border-radius: 3px;
+  color: white;
+}
+.timetable__content {
+  .cf;
+
+}
+.timetable__box {
+  border-bottom: 1px dashed @grey;
+}
+.timetable__time {
+  float: left;
+  font-size: 19/16em;
+  font-weight: bold;
+  color: @dgreen;
+}
+.timetable__hline {
+  margin-left: @sq*2;
+  font-size: 19/16em;
+}
+.timetable__txt {
+  font-size: 14/16em;
+  margin-left: @sq*2;
+  margin-bottom: @sq/2;
 }
